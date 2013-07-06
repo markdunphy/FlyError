@@ -69,7 +69,7 @@ class FlyError {
 			if ( $redirect ) $this->redirect( $redirect );
 		}
 
-		return true;
+		return TRUE;
 	}
 
 	/**
@@ -79,23 +79,25 @@ class FlyError {
 	 *
 	 * @param string $error Required. An error string to push onto the error array.
 	 * @param string $redirect Where to redirect to. Leave blank to not redirect.
-	 * @return int The index in the array where the new error is located (if no redirect supplied). False if no error supplied.
+	 * @return boolean|integer The index in the array where the new error is located (if no redirect supplied). False if no error supplied.
 	 */
 	public function push( $error, $redirect = NULL )
 	{
 		// Check to make sure this is in fact an array and is not empty
-		if ( !empty($error) )
+		if ( !empty( $error ) )
 		{
 			$this->errors[] = $error;
 
 			if ( $redirect ) $this->redirect( $redirect );
 
-			// Move array pointer to last index and return the key.
+			// Move array pointer to last index to prep for return
 			end( $this->errors );
+
+			// Return the key
 			return key( $this->errors );
 		}
 
-		return false;
+		return FALSE;
 	}
 
 	/**
@@ -105,9 +107,9 @@ class FlyError {
 	 *
 	 * @param boolean $unset Whether to unset the errors after displaying them. True by default.
 	 */
-	public function display( $unset = true )
+	public function display( $unset = TRUE )
 	{
-		if ( !$this->validate( $this->errors ) ) return false;
+		if ( !$this->validate( $this->errors ) ) return FALSE;
 
 		print implode( '<br />', $this->errors );
 
@@ -133,9 +135,7 @@ class FlyError {
 	 */
 	public function hasErrors()
 	{
-		if ( $this->validate( $this->errors ) ) return true;
-
-		return false;
+		return $this->validate( $this->errors );
 	}
 
 	/**
@@ -153,7 +153,7 @@ class FlyError {
 			exit();
 		}
 
-		return false;
+		return FALSE;
 	}
 
 	/**
@@ -161,7 +161,7 @@ class FlyError {
 	 *
 	 * Validate an array. Checks if it is an array and if it is empty.
 	 *
-	 * @param array $array Reuired. The array to check.
+	 * @param array $array Required. The array to check.
 	 * @return boolean Returns true if is array and not empty.
 	 */
 	private function validate( $array = NULL )
