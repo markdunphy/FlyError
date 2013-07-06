@@ -9,7 +9,6 @@ class FlyErrorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$_SESSION  = array();
 		$this->fly = new FlyError;
 	}
 
@@ -18,8 +17,6 @@ class FlyErrorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testArray()
 	{
-		$_SESSION  = array();
-		$this->fly = new FlyError;
 		$this->assertInternalType( 'array', $this->fly->all() );
 	}
 
@@ -28,8 +25,6 @@ class FlyErrorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testPushSingle()
 	{
-		$_SESSION  = array();
-		$this->fly = new FlyError;
 		$error = 'Failed to validate username!';
 		$this->fly->push( $error );
 
@@ -42,8 +37,6 @@ class FlyErrorTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testPushMultiple()
 	{
-		$_SESSION  = array();
-		$this->fly = new FlyError;
 		$errors = array(
 			'Failed to validate username!',
 			'Password is not long enough!',
