@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Fly Error
  *
@@ -70,6 +72,11 @@ class FlyError {
 		}
 
 		return TRUE;
+	}
+
+	public function get( $index = 0 )
+	{
+		return ( isset( $this->errors[ $index ] ) ) ? $this->errors[ $index ] : FALSE;
 	}
 
 	/**

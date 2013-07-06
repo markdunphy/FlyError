@@ -1,0 +1,7 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="Fly_Error">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
