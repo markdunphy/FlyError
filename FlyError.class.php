@@ -112,17 +112,27 @@ class FlyError {
 
 		print implode( '<br />', $this->errors );
 
-		if ( $unset ) $this->unsetAll();
+		if ( $unset ) $this->clear();
 	}
 
 	/**
-	 * Unset all method
+	 * Return all errors in session
+	 *
+	 * @return array
+	 */
+	public function all()
+	{
+		return $this->errors;
+	}
+
+	/**
+	 * Clear method
 	 *
 	 * Unset all errors stored in the session
 	 */
-	public function unsetAll()
+	public function clear()
 	{
-		unset( $this->session[ $this->index ] );
+		$this->errors = array();
 	}
 
 	/**
