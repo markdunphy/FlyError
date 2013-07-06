@@ -1,10 +1,11 @@
 <?php
-require __DIR__ . '/../FlyError.php';
+require __DIR__ . '/../src/FlyError.php';
 
 class FlyErrorTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
+		$_SESSION  = array();
 		$this->fly = new FlyError;
 	}
 
