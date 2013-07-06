@@ -44,9 +44,9 @@ class FlyError {
 	public function __construct()
 	{
 		// Lazily create the error array in session
-		if ( !is_array( $_SESSION[$this->index] ) ) $_SESSION[$this->index] = array();
+		if ( !is_array( $_SESSION[ $this->index ] ) ) $_SESSION[ $this->index ] = array();
 
-		$this->errors  = &$_SESSION[$this->index];
+		$this->errors  = &$_SESSION[ $this->index ];
 		$this->session = &$_SESSION;
 	}
 
@@ -59,7 +59,7 @@ class FlyError {
 	 * @param string $redirect Optional. Provide a string location (e.g. errors.php)
 	 * to redirect to after setting the errors. You would most likely use this page to display them.
 	 */
-	public function set( $errors, $redirect = NULL )
+	public function set( $errors = array(), $redirect = NULL )
 	{
 		// Check to make sure this is an array and is not empty
 		if ( $this->validate( $errors ) )
@@ -73,31 +73,30 @@ class FlyError {
 	}
 
 	/**
-	 * push method
+	 * Push method
 	 *
-	 * Pushes one error onto the stack.
+	 * Pushes errors onto the stack.
 	 *
-	 * @param string $error Required. An error string to push onto the error array.
+	 * @param string|array $error Required. An error string|array to push onto the error array.
 	 * @param string $redirect Where to redirect to. Leave blank to not redirect.
-	 * @return boolean|integer The index in the array where the new error is located (if no redirect supplied). False if no error supplied.
 	 */
-	public function push( $error, $redirect = NULL )
+	public function push( $errors, $redirect = NULL )
 	{
 		// Check to make sure this is in fact an array and is not empty
-		if ( !empty( $error ) )
+		if ( !empty( $errors ) )
 		{
-			$this->errors[] = $error;
+			// Merge error arrays or simply push onto the stack.
+			if ( is_array( $error ) )
+			{
+				$this->errors = array_merge( $this->errors, $errors );
+			}
+			else
+			{
+				$this->errors[] = $errors;
+			}
 
 			if ( $redirect ) $this->redirect( $redirect );
-
-			// Move array pointer to last index to prep for return
-			end( $this->errors );
-
-			// Return the key
-			return key( $this->errors );
 		}
-
-		return FALSE;
 	}
 
 	/**
@@ -123,7 +122,7 @@ class FlyError {
 	 */
 	public function unsetAll()
 	{
-		unset($this->session[$this->index]);
+		unset( $this->session[ $this->index ] );
 	}
 
 	/**
@@ -149,7 +148,7 @@ class FlyError {
 	{
 		if ( $location )
 		{
-			header("Location: $location");
+			header( "Location: $location" );
 			exit();
 		}
 
