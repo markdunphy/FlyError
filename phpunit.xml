@@ -1,4 +1,4 @@
-<phpunit>
+<phpunit bootstrap="bootstrap.php">
   <testsuites>
     <testsuite name="Fly_Error">
       <directory>tests</directory>
