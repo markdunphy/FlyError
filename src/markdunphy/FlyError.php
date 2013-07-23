@@ -35,6 +35,8 @@ class FlyError {
 	 */
 	private $index = 'fly_error';
 
+	public $asdf = 'isitevenloadingintravisci?!';
+
 	/**
 	 * Constructor
 	 *
