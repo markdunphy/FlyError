@@ -35,8 +35,6 @@ class FlyError {
 	 */
 	private $index = 'fly_error';
 
-	public $asdf = 'isitevenloadingintravisci?!';
-
 	/**
 	 * Constructor
 	 *
@@ -46,7 +44,7 @@ class FlyError {
 	public function __construct()
 	{
 		// Lazily create the error array in session
-		if ( !is_array( $_SESSION[ $this->index ] ) ) $_SESSION[ $this->index ] = array();
+		if ( !isset( $_SESSION[ $this->index ] ) ) $_SESSION[ $this->index ] = array();
 
 		$this->errors  = &$_SESSION[ $this->index ];
 		$this->session = &$_SESSION;

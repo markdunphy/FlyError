@@ -8,7 +8,6 @@ class FlyErrorTest extends PHPUnit_Framework_TestCase {
 	public function setUp()
 	{
 		$this->fly = new FlyError;
-		die( $this->fly->asdf );
 	}
 
 	/**
