@@ -1,12 +1,6 @@
 ## Fly Error
 #### A simple error management system stored in PHP sessions.
 
-
-### Get Started
-```php
-require('FlyError.class.php');
-```
-
 ### Get Moving
 ##### Setting errors
 ```php
