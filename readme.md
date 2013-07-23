@@ -1,4 +1,4 @@
-## Fly Error
+## Fly Error [![Build Status](https://travis-ci.org/markdunphy/FlyError.png?branch=master)](https://travis-ci.org/markdunphy/FlyError)
 #### A simple error management system stored in PHP sessions.
 
 ### Get Moving
